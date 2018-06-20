@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { Leader } from '../../shared/leader';
 import { Observable } from 'rxjs/Observable';
-import { baseURL } from '../../shared/baseurl';
+import { baseURL } from '../../shared/baseURL';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 //import { ProcessHttpmsgProvider } from '../process-httpmsg/process-httpmsg';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class LeaderProvider {
 
-  constructor(public http: HttpClient, @Inject('BaseURL') private BaseURL) {
+  constructor(public http: HttpClient, @Inject('BaseURL') public BaseURL) {
     console.log('Hello LeaderProvider Provider');
   }
 

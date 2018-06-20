@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { Dish } from '../../shared/dish';
 import { Observable } from 'rxjs/Observable';
-import { baseURL } from '../../shared/baseurl';
+import { baseURL } from '../../shared/baseURL';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 //import { ProcessHttpmsgProvider } from '../process-httpmsg/process-httpmsg';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class DishProvider {
 
-  constructor(public http: HttpClient, @Inject('BaseURL') private BaseURL) {
+  constructor(public http: HttpClient, @Inject('BaseURL') public BaseURL) {
     console.log('Hello DishProvider Provider');
   }
 
@@ -27,5 +27,8 @@ export class DishProvider {
     return this.http.get<Dish>(baseURL + 'dishes?featured=true')
       .map(data => data[0]);
   }
-
+  getDishes(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(baseURL + 'dishes')
+      .map(data => data);
+  }
 }

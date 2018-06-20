@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { baseURL } from '../../shared/baseurl';
+import { baseURL } from '../../shared/baseURL';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import {Promotion} from "../../shared/promotion";
@@ -15,7 +15,7 @@ import {Promotion} from "../../shared/promotion";
 @Injectable()
 export class PromotionProvider {
 
-  constructor(public http: HttpClient, @Inject('BaseURL') private BaseURL) {
+  constructor(public http: HttpClient, @Inject('BaseURL') public BaseURL) {
     console.log('Hello PromotionProvider Provider');
   }
 
