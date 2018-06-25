@@ -27,7 +27,7 @@ export class FavoritesPage implements OnInit{
   }
   ngOnInit() {
     this.favoriteservice.getFavorites()
-      .subscribe(favorites => this.favorites = favorites);
+      .subscribe(favorites => this.favorites = favorites, errmess => this.errMess = errmess);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
@@ -35,7 +35,7 @@ export class FavoritesPage implements OnInit{
   deleteFavorite(item: ItemSliding, id: number) {
     console.log('delete', id);
     this.favoriteservice.deleteFavorite(id)
-      .subscribe(favorites => this.favorites = favorites);
+      .subscribe(favorites => this.favorites = favorites, errmess => this.errMess = errmess);
     item.close();
 
   }
