@@ -18,7 +18,10 @@ export class ReservationPage {
 
   reservation: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public viewCtrl: ViewController,
+              private formBuilder: FormBuilder) {
 
     this.reservation = this.formBuilder.group({
       guests: 3,

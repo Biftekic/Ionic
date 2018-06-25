@@ -23,7 +23,6 @@ export class MenuPage implements OnInit {
 
   dishes: Dish[];
   errMess: string;
-  dish: Dish;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
