@@ -1,8 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, ToastController, ActionSheetController, ViewController} from 'ionic-angular';
 import { Dish } from '../../shared/dish';
 import { FavoriteProvider } from '../../providers/favorite/favorite';
-import { ActionSheetController } from 'ionic-angular';
+import {CommentPage} from "../comment/comment";
+import { Comment } from '../../shared/comment';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the DishdetailPage page.
@@ -23,13 +25,15 @@ export class DishdetailPage {
   avgstars: string;
   numcomments: number;
   favorite: boolean;
+  total: number;
 
   constructor(  public navCtrl: NavController,
                 public navParams: NavParams,
                 @Inject('BaseURL') public BaseURL,
                 private favoriteservice: FavoriteProvider,
                 private toastCtrl: ToastController,
-                public actionSheetCtrl: ActionSheetController
+                public actionSheetCtrl: ActionSheetController,
+                public modalCtrl: ModalController
               ) {
 
     this.dish = navParams.get('dish');
@@ -53,9 +57,33 @@ export class DishdetailPage {
       duration: 3000}).present();
   }
 
-  presentActionSheet() {
-    const actionSheet = this.actionSheetCtrl.create({
-      title: 'Modify your album',
+
+  presentCommentModal() {
+       let commentModal = this.modalCtrl.create(CommentPage);
+       commentModal.present();
+       commentModal.onDidDismiss(comment => { if(comment) {
+            this.dish.comments.push(comment);
+           this.total = this.total + comment.rating
+           }});
+      }
+
+  openComments() {
+    let modal = this.modalCtrl.create(CommentPage);
+    modal.onDidDismiss((myComment) => {
+      if (myComment){
+        this.dish.comments.push(myComment);
+        this.numcomments = this.dish.comments.length;
+        let total = 0;
+        this.dish.comments.forEach(comment => total += comment.rating);
+        this.avgstars = (total / this.numcomments).toFixed(2);
+      }
+    })
+    modal.present();
+  }
+
+  openMenu() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select actions',
       buttons: [
         {
           text: 'Add to Favorites',
@@ -72,7 +100,7 @@ export class DishdetailPage {
           text: 'Add a Comment',
           role: 'addAComment',
           handler: () => {
-
+            this.presentCommentModal()
             console.log('Comment clicked');
           }
         },{
