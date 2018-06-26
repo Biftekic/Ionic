@@ -1,10 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import {IonicPage, ModalController, NavController, NavParams, ToastController, ActionSheetController, ViewController} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, ToastController, ActionSheetController} from 'ionic-angular';
 import { Dish } from '../../shared/dish';
 import { FavoriteProvider } from '../../providers/favorite/favorite';
 import {CommentPage} from "../comment/comment";
-import { Comment } from '../../shared/comment';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+
 
 /**
  * Generated class for the DishdetailPage page.

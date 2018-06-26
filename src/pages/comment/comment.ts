@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController, ModalController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Dish } from '../../shared/dish';
 import { Comment } from '../../shared/comment';
-import { DishdetailPage } from '../../pages/dishdetail/dishdetail';
 
 
 /**

@@ -21,7 +21,8 @@ export class FavoritesPage implements OnInit{
   favorites: Dish[];
   errMess: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               private favoriteservice: FavoriteProvider,
               @Inject('BaseURL') private BaseURL,
               private toastCtrl: ToastController,
