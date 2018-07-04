@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Dish } from '../../shared/dish';
 import { Observable } from 'rxjs/Observable';
 import { DishProvider } from '../dish/dish';
 import { Storage } from '@ionic/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import {baseURL} from "../../shared/baseURL";
 import 'rxjs/add/operator/map';
 /*
   Generated class for the FavoriteProvider provider.
@@ -20,15 +21,18 @@ export class FavoriteProvider {
   constructor(public http: HttpClient,
               public dishservice: DishProvider,
               public storage: Storage,
-              private localNotifications: LocalNotifications) {
+              private localNotifications: LocalNotifications,
+              @Inject('BaseURL') public BaseURL) {
 
     console.log('Hello FavoriteProvider Provider');
     this.favorites = [];
+
     // Schedule a single notification
     this.localNotifications.schedule({
       id: id,
       text: 'Dish ' + id + ' added as a favorite successfully'
     });
+
   }
 
   addFavorite(id: number): boolean {
