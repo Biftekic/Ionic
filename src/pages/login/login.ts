@@ -20,7 +20,8 @@ export class LoginPage {
   loginForm: FormGroup;
   user: User = {username: '', password: ''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               public viewCtrl: ViewController,
               private formBuilder: FormBuilder,
               private storage: Storage ) {
