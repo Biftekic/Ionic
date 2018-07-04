@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { DishProvider } from '../dish/dish';
 import { Storage } from '@ionic/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import {baseURL} from "../../shared/baseURL";
 import 'rxjs/add/operator/map';
 /*
   Generated class for the FavoriteProvider provider.
@@ -21,8 +20,8 @@ export class FavoriteProvider {
   constructor(public http: HttpClient,
               public dishservice: DishProvider,
               public storage: Storage,
-              private localNotifications: LocalNotifications,
-              @Inject('BaseURL') public BaseURL) {
+              private localNotifications: LocalNotifications
+              ) {
 
     console.log('Hello FavoriteProvider Provider');
     this.favorites = [];

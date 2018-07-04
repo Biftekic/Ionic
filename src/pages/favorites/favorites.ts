@@ -4,6 +4,7 @@ import { FavoriteProvider } from '../../providers/favorite/favorite';
 import { Dish } from '../../shared/dish';
 
 
+
 /**
  * Generated class for the FavoritesPage page.
  *
@@ -27,12 +28,16 @@ export class FavoritesPage implements OnInit{
               @Inject('BaseURL') private BaseURL,
               private toastCtrl: ToastController,
               private loadingCtrl: LoadingController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+            ) {
   }
   ngOnInit() {
     this.favoriteservice.getFavorites()
       .subscribe(favorites => this.favorites = favorites, errmess => this.errMess = errmess);
+
+
   }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
   }
