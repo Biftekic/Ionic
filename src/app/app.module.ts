@@ -27,6 +27,7 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { baseURL } from '../shared/baseURL';
 import { FavoriteProvider } from '../providers/favorite/favorite';
 import { Camera } from '@ionic-native/camera';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { Camera } from '@ionic-native/camera';
     LocalNotifications,
     EmailComposer,
     SocialSharing,
-    Camera
+    Camera,
+    Network
   ]
 })
 export class AppModule {}
